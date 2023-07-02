@@ -27,5 +27,5 @@ export const Pokemon = new mongoose.model("pokemon", pokemonSchema);
 export const User = new mongoose.model("user", userSchema);
 
 
-// exporting the created modules 
+// exporting the created modules
 // export default { users, pokemon }
