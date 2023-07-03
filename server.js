@@ -39,7 +39,18 @@ connectToMongoDB()
 
 // creating the default route for the server
 app.get("/", (req, res) => {
-    res.send("<h1>Server is Running</h1> <p>Check api docs</p>")
+    res.send(`<h1>Server is Running</h1>
+    <div>
+    <h2>AVILABLE API ENDPOINTS</h2>
+    <ol>
+    <li>/api/v0/signup   => for new user sign in</li>
+    <li>/api/v0/signin   => for existing user login</li>
+    <li>/api/v0/createPokemon    => for creating the pokemon after login</li>
+    <li>/api/v0/getPokemons     => for getting all pokemons after login</li>
+    <li>/api/v0/getPokemons/:_id    => for getting one pokemon based on id after login </li>
+    </ol>
+</div>
+    `)
 })
 
 // creating a post route for creating a pokemon 
