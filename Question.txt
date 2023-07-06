@@ -1,0 +1,26 @@
+Session 12- 13/05/2023- Problem/Question 6
+
+## Questions → Authentication & Authorization.
+
+1. Create an API that authenticates a user based on email and password.
+2. On successful authentication, the user should receive a token.
+3. There should be a few endpoints that can be called only based on successful authentication.
+4. These are the following endpoints
+
+       1. To get a list of pokemon
+
+       2. To create a pokemon
+
+       3. To get a single pokemon on id.
+
+1. User should be blocked from accessing the above endpoints if he does not have a token or has the wrong token.
+
+ 6. Use Mongo DB as your database.
+
+ 7. Document the API for users and callers.
+
+## Test case →
+
+1. Successful authentication and getting the token.
+2. All the other endpoints are blocked if no token or wrong token is available in the request.
+3. The request should work successfully if the token is correct.

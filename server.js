@@ -67,7 +67,7 @@ app.post("/api/v0/createPokemon", async (req, res) => {
                 });
             res.status(200).send({ message: "Pokemon Created" })
         } else {
-            res.send({ message: "Some error occured in creating a pokemon", error: authorized.message });
+            res.send({ message: "Unauthorized User", error: authorized.message });
         }
 
     } catch (error) {
@@ -83,7 +83,7 @@ app.get("/api/v0/getPokemons", async (req, res) => {
         const authorized = auth(req, res);
         if (authorized.userId) {
             const result = await Pokemon.aggregate([{ $project: { _id: 1, __v: 0 } }])
-            res.send(result);
+            res.send({ data: result, message: "data sent" })
         }
         else {
             res.send({ message: "Unauthorized User" });
