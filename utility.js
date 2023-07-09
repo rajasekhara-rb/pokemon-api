@@ -18,7 +18,7 @@ const sendResetPasswordEmail = (name, email, token) => {
             to: email,
             subject: "Reset Password",
             html: `<div>Hi ${name},<br>
-            To reset your password please <a href="http://localhost:3000/resetPassword/${token}" target="_blank">click here</a>.
+            To reset your password please <a href="https://pokemon-api-frontend.netlify.app/resetPassword/${token}" target="_blank">click here</a>.
             <br>
             Thank you,<br>
             Regards,<br>
