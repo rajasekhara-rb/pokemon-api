@@ -8,7 +8,7 @@ const pokemonSchema = new mongoose.Schema({
     // avatar: URL,
     weakness: Array,
     strength: Array,
-    moves: Object
+    moves: Array
 })
 
 // creating a mongoose schemam for the users 
@@ -16,7 +16,11 @@ const pokemonSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    password: String
+    password: String,
+    forgotToken: {
+        type: String,
+        default: ""
+    }
 })
 
 
