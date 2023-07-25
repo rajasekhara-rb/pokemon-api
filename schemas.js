@@ -5,10 +5,11 @@ import mongoose from "mongoose";
 const pokemonSchema = new mongoose.Schema({
     // _id: Number,
     name: String,
-    // avatar: URL,
+    avatar: String,
     weakness: Array,
     strength: Array,
-    moves: Array
+    moves: Array,
+    // image: URL,
 })
 
 // creating a mongoose schemam for the users 
