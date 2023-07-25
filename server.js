@@ -56,8 +56,8 @@ app.get("/", (req, res) => {
 
 // creating a post route for creating a pokemon 
 app.post("/api/v0/createPokemon", async (req, res) => {
-    const { name, weakness, strength, moves } = req.body
-    const pokemonData = { name: name, weakness: weakness, strength: strength, moves: moves }
+    const { name, weakness, strength, moves, url } = req.body
+    const pokemonData = { name: name, image: url, weakness: weakness, strength: strength, moves: moves }
     try {
         const authorized = auth(req, res);
         if (authorized.userId) {

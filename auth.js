@@ -10,7 +10,8 @@ const auth = (req, res, next) => {
         const tokenHead = req.headers.authorization;
         if (tokenHead) {
             const token = tokenHead.split(" ")[1];
-            const user = jwt.verify(token, JWT_SCRECT_KEY)
+            // console.log(token)
+            const user = jwt.verify(token, JWT_SCRECT_KEY);
             req.userId = user.id;
             const userId = user.id;
             return ({ message: "Token Authorized", userId: userId })
