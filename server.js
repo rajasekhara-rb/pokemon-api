@@ -40,24 +40,36 @@ connectToMongoDB()
 
 // creating the default route for the server
 app.get("/", (req, res) => {
-    res.send(`<h1>Server is Running</h1>
-    <div>
-    <h2>AVILABLE API ENDPOINTS</h2>
-    <ol>
-    <li>/api/v0/signup   => for new user sign in</li>
-    <li>/api/v0/signin   => for existing user login</li>
-    <li>/api/v0/createPokemon    => for creating the pokemon after login</li>
-    <li>/api/v0/getPokemons     => for getting all pokemons after login</li>
-    <li>/api/v0/getPokemons/:_id    => for getting one pokemon based on id after login </li>
-    </ol>
-</div>
-    `)
+    res.send({
+        message: "Server is Live",
+        view_api_documentaton: "Will be updated soon",
+        access_required: "Access is required to use this api. To get access login through the website",
+        api_link: "https://pokemon-api-of93.onrender.com",
+        website_link: "https://pokemon-api-frontend.netlify.app/",
+        api_author: "Budda Rajasekhara Reddy"
+    });
 })
 
 // creating a post route for creating a pokemon 
 app.post("/api/v0/createPokemon", async (req, res) => {
-    const { name, weakness, strength, moves, avatar } = req.body
-    const pokemonData = { name: name, avatar: avatar, weakness: weakness, strength: strength, moves: moves }
+    const data = req.body
+    // const pokemonData = { name: name, avatar: avatar, weakness: weakness, strength: strength, moves: moves }
+    const pokemonData = {
+        id: data.id,
+        name: data.name,
+        avatar: data.avatar,
+        description: data.description,
+        category: data.category,
+        height: data.height,
+        weight: data.weight,
+        abilities: data.abilities,
+        gender: data.gender,
+        type: data.type,
+        weaknesses: data.weaknesses,
+        stats: data.stats,
+        evolutions: data.evolutions,
+    }
+
     try {
         const authorized = auth(req, res);
         if (authorized.userId) {
@@ -65,7 +77,10 @@ app.post("/api/v0/createPokemon", async (req, res) => {
             poke.save()
                 .then((e) => {
                     console.log("Pokemon Data Saved Successfully");
-                });
+                }).catch((error) => {
+                    console.log(error)
+                    res.send({ message: "Some error occured in creating a pokemon", error: error.message })
+                })
             res.status(200).send({ message: "Pokemon Created" })
         } else {
             res.send({ message: "Unauthorized User", error: authorized.message });

@@ -3,13 +3,27 @@ import mongoose from "mongoose";
 // created a mongoose schema for the pokemon 
 
 const pokemonSchema = new mongoose.Schema({
-    // _id: Number,
+    // id: Number,
+    // name: String,
+    // avatar: String,
+    // weakness: Array,
+    // strength: Array,
+    // moves: Array,
+    // image: URL,
+
+    id: Number,
     name: String,
     avatar: String,
-    weakness: Array,
-    strength: Array,
-    moves: Array,
-    // image: URL,
+    description: String,
+    category: String,
+    height: String,
+    weight: Number,
+    abilities: Array,
+    gender: String,
+    type: Array,
+    weaknesses: Array,
+    stats: Array,
+    evolutions: Array
 })
 
 // creating a mongoose schemam for the users 
